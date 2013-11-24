@@ -22,8 +22,8 @@ import android.widget.EditText;
  * <br/>This program is protected by copyright laws.
  * <br/>Program Name:
  * <br/>Date:
- * @author  Yeeku.H.Lee kongyeeku@163.com
- * @version  1.0
+ * @author  Yeeku.H.Lee kongyeeku@163.com  
+ * @version  1.1
  */
 public class Login extends Activity
 {
