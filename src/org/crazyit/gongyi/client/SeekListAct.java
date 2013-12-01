@@ -83,16 +83,6 @@ public class SeekListAct extends Activity {
 
 				TextView tv4 = (TextView) arg1.findViewById(R.id.file);
 				String file = tv4.getText().toString();
-				/*
-				 * TextView tv5=(TextView)arg1.findViewById(R.id.diqu); String
-				 * diqu=String.valueOf(tv5.getText().toString());
-				 * 
-				 * TextView tv6=(TextView)arg1.findViewById(R.id.renshu); String
-				 * renshu=String.valueOf(tv6.getText().toString());
-				 * 
-				 * TextView tv7=(TextView)arg1.findViewById(R.id.jindu); String
-				 * jindu=String.valueOf(tv7.getText().toString());
-				 */
 
 				Intent intent = new Intent(SeekListAct.this, null);
 				intent.putExtra("_id", _id);
@@ -116,11 +106,13 @@ public class SeekListAct extends Activity {
 		String url = HttpUtil.BASE_URL + action;
 		try {
 			// 向指定URL发送请求，并把服务器响应转换成JSONArray对象
-			JSONArray jsonArray = new JSONArray(HttpUtil.getRequest(url));
+			// String responseStr = HttpUtil.getRequest(url); //FIXME
+			String responseStr = "[{\"needAmount\":30000,\"seekerDesc\":\"你懂的\",\"seekerAddr\":\"三里巷9999号\",\"helpAmount\":502,\"recStatus\":0,\"photo\":\"images_user/user1Photo.png\",\"seekerProv\":\"浙江省\",\"id\":1,\"helpCount\":435,\"doneDate\":\"2013-11-27 20:41:24.0\",\"seekerZone\":\"杭州市\",\"title\":\"[助医]恳请天下好心人救我一命\",\"browseCount\":800,\"seekerName\":\"三毛\",\"createDate\":\"2013-11-30 14:45:00.0\"},{\"needAmount\":40000,\"seekerDesc\":\"你懂的2\",\"seekerAddr\":\"三里巷9999号2\",\"helpAmount\":505,\"recStatus\":0,\"photo\":\"images_user/user2Photo.png\",\"seekerProv\":\"浙江省\",\"id\":2,\"helpCount\":123,\"doneDate\":\"2013-11-27 20:41:24.0\",\"seekerZone\":\"杭州市\",\"title\":\"[好饿]偶好饿\",\"browseCount\":1800,\"seekerName\":\"三毛2\",\"createDate\":\"2013-11-30 14:45:00.0\"}] ";
+			JSONArray jsonArray = new JSONArray(responseStr);
 			for (int i = 0; i < jsonArray.length(); i++) {
 				JSONObject jsonObj = (JSONObject) jsonArray.get(i);
 				Map<String, Object> map = new HashMap<String, Object>();
-				int num = 8888;
+				int num = jsonObj.getInt("id");
 				Picture p = new Picture();
 				String name = jsonObj.getString("seekerName");
 				String logo = jsonObj.getString("title");
@@ -141,9 +133,11 @@ public class SeekListAct extends Activity {
 				String file = "file";
 
 				map.put("num", num);
-				map.put("img",
-						getBitmap(HttpUtil.BASE_URL0
-								+ jsonObj.getString("photo")));
+				//FIXME
+//				map.put("img",
+//						getBitmap(HttpUtil.BASE_URL0
+//								+ jsonObj.getString("photo")));
+				map.put("img", p.getPicture(num - 1));
 				map.put("name", name);
 				map.put("logo", logo);
 				map.put("place", place);
