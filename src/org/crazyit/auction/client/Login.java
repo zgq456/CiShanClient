@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.crazyit.auction.client.util.DialogUtil;
 import org.crazyit.auction.client.util.HttpUtil;
+import org.crazyit.gongyi.client.R;
 import org.json.JSONObject;
 
 import android.app.Activity;

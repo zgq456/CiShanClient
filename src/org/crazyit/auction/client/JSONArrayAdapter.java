@@ -3,6 +3,7 @@
  */
 package org.crazyit.auction.client;
 
+import org.crazyit.gongyi.client.R;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONException;

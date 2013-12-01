@@ -1,6 +1,8 @@
 package org.crazyit.auction.client;
 
 
+import org.crazyit.gongyi.client.R;
+
 import android.app.Activity;
 import android.content.Intent;
 
